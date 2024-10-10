@@ -9,68 +9,61 @@
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 
-    <!-- Importing Google Font Ndot57 -->
+    <!-- Importing Nothing.tech font -->
     <link href="https://fonts.googleapis.com/css2?family=Ndot57&display=swap" rel="stylesheet">
 
     <style>
-        /* Applying the Ndot57 font */
         body {
-            font-family: 'NDOT 47 (inspired by NOTHING)', sans-serif;
-            color: #f5f5f5;
+            font-family: 'Ndot57', sans-serif;
             background-color: #101010;
+            color: #eaeaea;
             margin: 0;
             padding: 0 20px;
             line-height: 1.6;
         }
 
-        /* Centered container with padding */
         .container {
-            max-width: 800px;
+            max-width: 700px;
             margin: 0 auto;
             padding: 20px;
         }
 
         h1, h2, h3 {
             color: #ffffff;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 1.75em;
+            font-weight: 400;
             margin-bottom: 15px;
         }
 
-        h3 {
-            font-size: 1.25em;
-            margin-bottom: 10px;
+        h1 {
+            font-size: 2em;
         }
 
-        p, ul, li {
-            color: #c9c9c9;
-            font-size: 1.1em;
+        h2 {
+            font-size: 1.5em;
+        }
+
+        h3 {
+            font-size: 1.2em;
+        }
+
+        p, ul {
+            font-size: 1em;
+            margin-bottom: 15px;
         }
 
         ul {
-            list-style-type: none;
-            padding-left: 0;
+            list-style: none;
+            padding: 0;
         }
 
         li {
             margin-bottom: 10px;
         }
 
-        /* Custom styling for equations */
         .MathJax {
-            color: #f5f5f5;
+            color: #eaeaea;
         }
 
-        /* Styling the links */
         a {
             color: #ffffff;
             text-decoration: none;
@@ -79,14 +72,25 @@
 
         a:hover {
             color: #c9c9c9;
-            border-bottom: 1px solid #c9c9c9;
+            border-bottom-color: #c9c9c9;
         }
 
-        /* Simple footer */
         footer {
             text-align: center;
-            color: #8f8f8f;
-            margin-top: 40px;
+            color: #7f7f7f;
+            margin-top: 30px;
+            font-size: 0.9em;
+        }
+
+        /* Styling for equations block */
+        .equation-block {
+            margin: 15px 0;
+            text-align: center;
+            font-size: 1.1em;
+        }
+
+        .equation-inline {
+            font-size: 1em;
         }
     </style>
 </head>
@@ -97,7 +101,7 @@
         <h2>Forces</h2>
         <h3>Solar Wind</h3>
         <p>
-            Solar wind originates from the Sun's corona, with temperatures ranging from 1 to 2 million degrees Celsius.
+            Solar wind originates from the Sun's corona, with temperatures ranging from \(1\) to \(2 \times 10^6\) degrees Celsius.
             At these temperatures, the Sun's gravity cannot retain the particles, which escape into space as solar wind.
             The solar wind primarily consists of electrons, protons, and some heavier ions, all in a plasma state (ionized and electrically charged).
         </p>
@@ -110,10 +114,13 @@
         <ul>
             <li>1st Law: The orbit of a planet is an ellipse, with the Sun at one of the two foci.</li>
             <li>2nd Law: A line segment joining a planet and the Sun sweeps out equal areas during equal intervals of time.</li>
-            <li>3rd Law: The square of the orbital period (\(T\)) of a planet is proportional to the cube of the semi-major axis (\(a\)) of its orbit:
-                \[
-                T^2 \propto a^3
-                \]
+            <li>
+                3rd Law: The square of the orbital period \((T)\) of a planet is proportional to the cube of the semi-major axis \((a)\) of its orbit:
+                <div class="equation-block">
+                    \[
+                    T^2 \propto a^3
+                    \]
+                </div>
             </li>
         </ul>
 
@@ -140,40 +147,34 @@
 
         <h2>Comet Tails</h2>
         <p>
-            <li><strong>Dust Tail:</strong> Formed by dust particles pushed away from the comet by solar radiation.</li>
-            <li><strong>Ion Tail:</strong> Created by ionized gases being swept away by the solar wind.</li>
+            <ul>
+                <li><strong>Dust Tail:</strong> Formed by dust particles pushed away from the comet by solar radiation.</li>
+                <li><strong>Ion Tail:</strong> Created by ionized gases being swept away by the solar wind.</li>
+            </ul>
         </p>
 
         <h2>Solar System Regions</h2>
         <h3>Kuiper Belt</h3>
         <p>
-            The Kuiper Belt is a region extending from about 30 to 55 astronomical units (AU) from the Sun, populated by small icy bodies like Pluto. It is a remnant of the early solar system, helping scientists understand its formation.
+            The Kuiper Belt is a region extending from about \(30\) to \(55 \, \text{AU}\) from the Sun, populated by small icy bodies like Pluto. It is a remnant of the early solar system, helping scientists understand its formation.
         </p>
 
         <h3>Oort Cloud</h3>
         <p>
-            The Oort Cloud, sometimes called the Öpik-Oort Cloud, is a distant, spherical shell surrounding the solar system, stretching from 2,000 to 100,000 AU from the Sun. It contains icy, comet-like bodies, and is the origin of long-period comets with orbits lasting over 200 years.
+            The Oort Cloud, sometimes called the Öpik-Oort Cloud, is a distant, spherical shell surrounding the solar system, stretching from \(2,000\) to \(100,000 \, \text{AU}\) from the Sun. It contains icy, comet-like bodies, and is the origin of long-period comets with orbits lasting over \(200\) years.
         </p>
         
         <h2>Comet Tail Colors</h2>
         <p>
-        	<li><strong>Red:</strong> A red ion tail typically suggests the presence of ionized gases such as carbon monoxide ions (CO⁺) and sometimes hydrogen ions (H₂O⁺). When these gases are exposed to solar ultraviolet radiation, they become ionized and emit light at specific wavelengths. For CO⁺, this ionization results in a red glow that can be detected in the visible spectrum.</li>
-        <p>    
-            <li><strong>Blue:</strong> A blue ion tail on a comet is mainly caused by ionized carbon monoxide (CO⁺). When solar ultraviolet radiation ionizes these molecules, they emit a blue glow.</li> 
-        <p>
-        <p>
-            <li><strong>Orange:</strong> An orange ion tail on a comet usually indicates the presence of ionized sodium (Na⁺). When sodium is ionized by solar ultraviolet radiation, it emits light in the orange-yellow part of the spectrum.Such tails are less common and can reveal specific details about the comet’s composition.</li>
-        <p>
-        <p>
-         <li><strong>Green:</strong> A green glow in a comet’s ion tail is often due to the presence of diatomic carbon (C₂) or cyanogen (CN) gas. When these molecules are exposed to ultraviolet light from the Sun, they absorb energy and emit green light. This green emission is usually seen in the coma rather than the tail itself, but as the gas disperses, it can extend into the ion tail.</li>
-        <p>
-        <p>
-        <li><strong>Yellow:</strong> A yellow ion tail is typically the result of the ionization of neutral sodium atoms (Na). When solar ultraviolet radiation ionizes sodium, it produces a yellowish glow. This tail is generally fainter than the more common blue or green ion tails, but it can become visible under certain conditions, especially when the comet is close to the Sun and the sodium becomes more active due to heating.</li>
-        <p>
-        <p>
-        <li><strong>White:</strong> A white ion tail appears when a mixture of different ions—like carbon dioxide (CO₂⁺), water (H₂O⁺), and carbon monoxide (CO⁺)—is present, each contributing its emission lines. The combination of these different ion emissions can create a more neutral or white appearance in the tail. This tail is often less distinct in color but can be very bright and extensive, especially when the solar wind interacts strongly with the comet’s ionized gases.</li> 
-        <p>
-        	
+            <ul>
+                <li><strong>Red:</strong> A red ion tail typically suggests the presence of ionized gases such as carbon monoxide ions (\( \text{CO}^+ \)) and sometimes hydrogen ions (\( \text{H}_2\text{O}^+ \)).</li>
+                <li><strong>Blue:</strong> A blue ion tail on a comet is mainly caused by ionized carbon monoxide (\( \text{CO}^+ \)).</li>
+                <li><strong>Orange:</strong> Indicates the presence of ionized sodium (\( \text{Na}^+ \)).</li>
+                <li><strong>Green:</strong> Due to diatomic carbon (\( \text{C}_2 \)) or cyanogen (\( \text{CN} \)).</li>
+                <li><strong>Yellow:</strong> Caused by the ionization of neutral sodium atoms (\( \text{Na} \)).</li>
+                <li><strong>White:</strong> A mix of different ions such as \( \text{CO}_2^+ \), \( \text{H}_2\text{O}^+ \), and \( \text{CO}^+ \).</li>
+            </ul>
+        </p>
 
         <footer>
             <p>Comet Behaviors - by Hayden Chen and Oliver Wang</p>
