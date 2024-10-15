@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f8f8f8;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.toolbar {
+    background: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.canvas {
+    flex: 1;
+    background: #ffffff;
+    position: relative;
+    overflow: auto;
+}
+
+.text-box, .shape {
+    position: absolute;
+    border: 1px dashed #ddd;
+    padding: 10px;
+    background: #fdfdfd;
+    resize: both;
+    overflow: hidden;
+}
+
+.shape {
+    width: 100px;
+    height: 100px;
+    background-color: #e0e0e0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    border: 1px solid #ddd;
+}
+
+.text-box textarea {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    resize: none;
+}
