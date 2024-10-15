@@ -1,67 +1,62 @@
-function addTextBox() {
-    const canvas = document.getElementById('canvas');
-    const textBox = document.createElement('div');
-    textBox.className = 'text-box';
-    textBox.contentEditable = true;
-    textBox.style.left = '50px';
-    textBox.style.top = '50px';
-    textBox.style.width = '150px';
-    textBox.innerHTML = '<textarea placeholder="Type here..."></textarea>';
-    canvas.appendChild(textBox);
-
-    makeDraggable(textBox);
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f0f0f0;
 }
 
-function addImage() {
-    const imageUrl = prompt('Enter the URL of the image:');
-    if (imageUrl) {
-        const canvas = document.getElementById('canvas');
-        const img = document.createElement('img');
-        img.src = imageUrl;
-        img.style.position = 'absolute';
-        img.style.left = '50px';
-        img.style.top = '50px';
-        img.draggable = true;
-        canvas.appendChild(img);
-
-        makeDraggable(img);
-    }
+.toolbar {
+    background-color: #ffffff;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
-function addShape() {
-    const canvas = document.getElementById('canvas');
-    const shape = document.createElement('div');
-    shape.className = 'shape';
-    shape.style.left = '100px';
-    shape.style.top = '100px';
-    canvas.appendChild(shape);
-
-    makeDraggable(shape);
+button {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    border-radius: 4px;
 }
 
-function makeDraggable(element) {
-    element.onmousedown = function(event) {
-        const shiftX = event.clientX - element.getBoundingClientRect().left;
-        const shiftY = event.clientY - element.getBoundingClientRect().top;
+button:hover {
+    background-color: #f2f2f2;
+}
 
-        function moveAt(pageX, pageY) {
-            element.style.left = pageX - shiftX + 'px';
-            element.style.top = pageY - shiftY + 'px';
-        }
+.canvas {
+    position: relative;
+    height: calc(100vh - 50px);
+    background-color: #ffffff;
+    overflow: auto;
+    padding: 10px;
+}
 
-        function onMouseMove(event) {
-            moveAt(event.pageX, event.pageY);
-        }
+.element {
+    position: absolute;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    resize: both;
+    overflow: hidden;
+    cursor: move;
+}
 
-        document.addEventListener('mousemove', onMouseMove);
+.text-box {
+    padding: 8px;
+    font-size: 14px;
+    background: #ffffff;
+    min-width: 100px;
+    min-height: 30px;
+}
 
-        element.onmouseup = function() {
-            document.removeEventListener('mousemove', onMouseMove);
-            element.onmouseup = null;
-        };
-    };
+.shape {
+    width: 100px;
+    height: 100px;
+    background-color: #e0e0e0;
+    border-radius: 0;
+}
 
-    element.ondragstart = function() {
-        return false;
-    };
+.shape.circle {
+    border-radius: 50%;
 }
