@@ -3,182 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Comet Behavior</title>
-
-    <!-- Importing MathJax for LaTeX rendering -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-
-    <!-- Importing Nothing.tech font -->
-    <link href="https://fonts.googleapis.com/css2?family=Ndot57&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            font-family: 'Ndot57', sans-serif;
-            background-color: #101010;
-            color: #eaeaea;
-            margin: 0;
-            padding: 0 20px;
-            line-height: 1.6;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        h1, h2, h3 {
-            color: #ffffff;
-            font-weight: 400;
-            margin-bottom: 15px;
-        }
-
-        h1 {
-            font-size: 2em;
-        }
-
-        h2 {
-            font-size: 1.5em;
-        }
-
-        h3 {
-            font-size: 1.2em;
-        }
-
-        p, ul {
-            font-size: 1em;
-            margin-bottom: 15px;
-        }
-
-        ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        .MathJax {
-            color: #eaeaea;
-        }
-
-        a {
-            color: #ffffff;
-            text-decoration: none;
-            border-bottom: 1px solid #ffffff;
-        }
-
-        a:hover {
-            color: #c9c9c9;
-            border-bottom-color: #c9c9c9;
-        }
-
-        footer {
-            text-align: center;
-            color: #7f7f7f;
-            margin-top: 30px;
-            font-size: 0.9em;
-        }
-
-        /* Styling for equations block */
-        .equation-block {
-            margin: 15px 0;
-            text-align: center;
-            font-size: 1.1em;
-        }
-
-        .equation-inline {
-            font-size: 1em;
-        }
-    </style>
+    <title>Arc Easels</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Comet Behavior</h1>
-
-        <h2>Forces</h2>
-        <h3>Solar Wind</h3>
-        <p>
-            Solar wind originates from the Sun's corona, with temperatures ranging from \(1\) to \(2 \times 10^6\) degrees Celsius.
-            At these temperatures, the Sun's gravity cannot retain the particles, which escape into space as solar wind.
-            The solar wind primarily consists of electrons, protons, and some heavier ions, all in a plasma state (ionized and electrically charged).
-        </p>
-        <p>
-            The solar wind travels at speeds of \(300 - 800 \, \text{km/s}\), depending on its source within the Sun. For instance,
-            solar wind originating from coronal holes (cooler, less dense areas) moves faster.
-        </p>
-
-        <h3>Kepler's Laws of Planetary Motion</h3>
-        <ul>
-            <li>1st Law: The orbit of a planet is an ellipse, with the Sun at one of the two foci.</li>
-            <li>2nd Law: A line segment joining a planet and the Sun sweeps out equal areas during equal intervals of time.</li>
-            <li>
-                3rd Law: The square of the orbital period \((T)\) of a planet is proportional to the cube of the semi-major axis \((a)\) of its orbit:
-                <div class="equation-block">
-                    \[
-                    T^2 \propto a^3
-                    \]
-                </div>
-            </li>
-        </ul>
-
-        <h3>Comet Orbit</h3>
-        <p>
-            Comets follow highly elliptical orbits, which may differ from the plane of planetary orbits. The speed of the comet increases as it approaches the Sun due to gravitational pull and decreases as it moves farther away.
-        </p>
-
-        <h2>Energy and Heat</h2>
-        <p>
-            As a comet nears the Sun, heat can cause the loss of volatile materials from the surface, forming a crust. Intense heat can stress the comet's nucleus, leading to fragmentation or disintegration.
-        </p>
-
-        <h2>Matter</h2>
-        <h3>Sublimation</h3>
-        <p>
-            Sublimation is the process in which a solid turns directly into a gas, bypassing the liquid phase. This occurs in comets when they are too close to the Sun, turning ice into vapor.
-        </p>
-
-        <h3>Outgassing</h3>
-        <p>
-            Outgassing refers to the release of gas that was trapped, frozen, or absorbed in some material. This phenomenon is common in comets and can contribute to planetary atmospheres.
-        </p>
-
-        <h2>Comet Tails</h2>
-        <p>
-            <ul>
-                <li><strong>Dust Tail:</strong> Formed by dust particles pushed away from the comet by solar radiation.</li>
-                <li><strong>Ion Tail:</strong> Created by ionized gases being swept away by the solar wind.</li>
-            </ul>
-        </p>
-
-        <h2>Solar System Regions</h2>
-        <h3>Kuiper Belt</h3>
-        <p>
-            The Kuiper Belt is a region extending from about \(30\) to \(55 \, \text{AU}\) from the Sun, populated by small icy bodies like Pluto. It is a remnant of the early solar system, helping scientists understand its formation.
-        </p>
-
-        <h3>Oort Cloud</h3>
-        <p>
-            The Oort Cloud, sometimes called the Öpik-Oort Cloud, is a distant, spherical shell surrounding the solar system, stretching from \(2,000\) to \(100,000 \, \text{AU}\) from the Sun. It contains icy, comet-like bodies, and is the origin of long-period comets with orbits lasting over \(200\) years.
-        </p>
-        
-        <h2>Comet Tail Colors</h2>
-        <p>
-            <ul>
-                <li><strong>Red:</strong> A red ion tail typically suggests the presence of ionized gases such as carbon monoxide ions (\( \text{CO}^+ \)) and sometimes hydrogen ions (\( \text{H}_2\text{O}^+ \)).</li>
-                <li><strong>Blue:</strong> A blue ion tail on a comet is mainly caused by ionized carbon monoxide (\( \text{CO}^+ \)).</li>
-                <li><strong>Orange:</strong> Indicates the presence of ionized sodium (\( \text{Na}^+ \)).</li>
-                <li><strong>Green:</strong> Due to diatomic carbon (\( \text{C}_2 \)) or cyanogen (\( \text{CN} \)).</li>
-                <li><strong>Yellow:</strong> Caused by the ionization of neutral sodium atoms (\( \text{Na} \)).</li>
-                <li><strong>White:</strong> A mix of different ions such as \( \text{CO}_2^+ \), \( \text{H}_2\text{O}^+ \), and \( \text{CO}^+ \).</li>
-            </ul>
-        </p>
-
-        <footer>
-            <p>Comet Behaviors - by Hayden Chen and Oliver Wang</p>
-        </footer>
+        <div class="toolbar">
+            <button onclick="addTextBox()">Add Text Box</button>
+            <button onclick="addImage()">Add Image</button>
+            <button onclick="addShape()">Add Shape</button>
+        </div>
+        <div class="canvas" id="canvas">
+            <!-- Elements will be added here dynamically -->
+        </div>
     </div>
+    <script src="scripts.js"></script>
 </body>
 </html>
