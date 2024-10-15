@@ -1,58 +1,71 @@
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f8f8f8;
-    margin: 0;
-    padding: 0;
+b// Function to add a draggable text box
+function addTextBox() {
+    const canvas = document.getElementById('canvas');
+    const textBox = document.createElement('div');
+    textBox.className = 'element text-box';
+    textBox.contentEditable = true;
+    textBox.innerText = 'Type here...';
+    canvas.appendChild(textBox);
+    makeDraggable(textBox);
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    height: 100vh;
+// Function to add an image element
+function addImage() {
+    const imageUrl = prompt('Enter the image URL:');
+    if (imageUrl) {
+        const canvas = document.getElementById('canvas');
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.className = 'element';
+        img.style.width = '150px';
+        img.style.height = 'auto';
+        canvas.appendChild(img);
+        makeDraggable(img);
+    }
 }
 
-.toolbar {
-    background: #fff;
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    display: flex;
-    gap: 10px;
-    justify-content: center;
+// Function to add a rectangle shape
+function addRectangle() {
+    const canvas = document.getElementById('canvas');
+    const rectangle = document.createElement('div');
+    rectangle.className = 'element shape';
+    canvas.appendChild(rectangle);
+    makeDraggable(rectangle);
 }
 
-.canvas {
-    flex: 1;
-    background: #ffffff;
-    position: relative;
-    overflow: auto;
+// Function to add a circle shape
+function addCircle() {
+    const canvas = document.getElementById('canvas');
+    const circle = document.createElement('div');
+    circle.className = 'element shape circle';
+    canvas.appendChild(circle);
+    makeDraggable(circle);
 }
 
-.text-box, .shape {
-    position: absolute;
-    border: 1px dashed #ddd;
-    padding: 10px;
-    background: #fdfdfd;
-    resize: both;
-    overflow: hidden;
-}
+// Function to make elements draggable
+function makeDraggable(element) {
+    element.onmousedown = function(event) {
+        const shiftX = event.clientX - element.getBoundingClientRect().left;
+        const shiftY = event.clientY - element.getBoundingClientRect().top;
 
-.shape {
-    width: 100px;
-    height: 100px;
-    background-color: #e0e0e0;
-}
+        function moveAt(pageX, pageY) {
+            element.style.left = pageX - shiftX + 'px';
+            element.style.top = pageY - shiftY + 'px';
+        }
 
-img {
-    max-width: 100%;
-    height: auto;
-    border: 1px solid #ddd;
-}
+        function onMouseMove(event) {
+            moveAt(event.pageX, event.pageY);
+        }
 
-.text-box textarea {
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: transparent;
-    font-size: 14px;
-    resize: none;
+        document.addEventListener('mousemove', onMouseMove);
+
+        element.onmouseup = function() {
+            document.removeEventListener('mousemove', onMouseMove);
+            element.onmouseup = null;
+        };
+    };
+
+    element.ondragstart = function() {
+        return false;
+    };
 }
