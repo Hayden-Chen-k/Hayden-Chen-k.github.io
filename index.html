@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Flight and Expulsion of the Germans | 1945-1949</title>
+  <style>
+    @import url('https://fonts.cdnfonts.com/css/eb-garamond');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'EB Garamond', serif;
+      color: #333;
+      background-color: #f5f5f5;
+      line-height: 1.9;
+      overflow-x: hidden
+    }
+    
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 50px;
+    }
+    
+    header {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      background-color: #f0f0f0;
+    }
+    
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      padding: 20px 0;
+      background-color: rgba(245, 245, 245, 0.9);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+    }
+    
+    nav .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 24px;
+      font-weight: 400;
+      letter-spacing: 1px;     
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 40px;
+    }
+    
+    .nav-links a {
+      text-decoration: none;
+      color: #333;
+      font-size: 20px;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: #888;
+    }
+    
+    h1 {
+      font-size: 60px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    
+    h1.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    h2 {
+      font-size: 36px;
+      font-weight: 400;
+      margin-bottom: 30px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    
+    h2.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    h3 {
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    
+    h3.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .date {
+      font-size: 24px;
+      font-style: italic;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+      transition-delay: 0.2s;
+    }
+    
+    .date.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .scroll-indicator {
+      position: absolute;
+      bottom: 40px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+    
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0) translateX(-50%);
+      }
+      40% {
+        transform: translateY(-20px) translateX(-50%);
+      }
+      60% {
+        transform: translateY(-10px) translateX(-50%);
+      }
+    }
+    
+    section {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 100px 0;
+    }
+    
+    section:nth-child(even) {
+      background-color: #f0f0f0;
+    }
+    
+    .content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    p {
+      font-size: 20ipx;
+      margin-bottom: 40px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    
+    p.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .quote {
+      font-size: 28px;
+      font-style: italic;
+      text-align: center;
+      max-width: 800px;
+      margin: 60px auto;
+      padding: 0 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+      border-left: 3px solid #888;
+      padding-left: 30px;
+    }
+    
+    .quote.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .attribution {
+      display: block;
+      font-size: 20px;
+      margin-top: 20px;
+      text-align: right;
+    }
+    
+    .image-container {
+      width: 800px;
+      height: auto;
+      overflow: hidden;
+      margin: 60px auto;
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      max-width: 100%;
+      display: block;
+     transition: opacity 1s ease, transform 1s ease;
+    }
+    
+    .image-container.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      background-color: #ddd;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #888;
+      font-size: 24px;
+    }
+    
+    .timeline {
+      margin: 70px 0;
+      padding: 20px 0;
+      position: relative;
+    }
+    
+    .timeline::before {
+      content: '';
+      position: absolute;
+      width: 2px;
+      background-color: #ddd;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -1px;
+    }
+    
+    .timeline-item {
+      padding: 20px 40px;
+      position: relative;
+      width: 50%;
+      opacity: 0;
+      transition: opacity 1s ease, transform 0.5s ease;
+    }
+    
+    .timeline-item.show {
+      opacity: 1;
+    }
+    
+    .timeline-item:nth-child(odd) {
+      left: 0;
+      transform: translateX(-50px);
+    }
+    
+    .timeline-item:nth-child(odd).show {
+      transform: translateX(0);
+    }
+    
+    .timeline-item:nth-child(even) {
+      left: 50%;
+      transform: translateX(50px);
+    }
+    
+    .timeline-item:nth-child(even).show {
+      transform: translateX(0);
+    }
+    
+    .timeline-item::after {
+      content: '';
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      right: -8px;
+      background-color: #f5f5f5;
+      border: 2px solid #888;
+      top: 22px;
+      border-radius: 50%;
+      z-index: 1;
+    }
+    
+    .timeline-item:nth-child(even)::after {
+      left: -8px;
+    }
+    
+    .timeline-date {
+      font-size: 20px;
+      font-style: italic;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+    
+    .stat-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 60px 0;
+    }
+    
+    .stat-item {
+      text-align: center;
+      flex: 1;
+      padding: 20px;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    
+    .stat-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .stat-number {
+      font-size: 48px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+    
+    .stat-label {
+      font-size: 18px;
+    }
+    
+    footer {
+      padding: 60px 0;
+      text-align: center;
+      background-color: #333;
+      color: #f5f5f5;
+    }
+    
+    footer p {
+      opacity: 1;
+      transform: none;
+      transition: none;
+      font-size: 18px;
+    }
+    
+    .sources {
+      margin-top: 40px;
+      font-size: 16px;
+      opacity: 0.8;
+    }
+
+    glossary-container, .citations-container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.glossary-item, .citation-item {
+  margin-bottom: 30px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 1s ease, transform 1s ease;
+}
+
+.glossary-item.show, .citation-item.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.term {
+  font-weight: bold;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.definition {
+  font-size: 20px;
+  margin-left: 20px;
+}
+
+.citation {
+  font-size: 20px;
+  text-indent: -40px;
+  padding-left: 40px;
+  line-height: 1.6;
+}
+
+.glossary-nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.glossary-nav a {
+  margin: 5px;
+  padding: 5px 10px;
+  background-color: #eee;
+  text-decoration: none;
+  color: #333;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.glossary-nav a:hover {
+  background-color: #ddd;
+}
+
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="container">
+      <div class="logo">The Flight and Expulsion of the Germans</div>
+      <div class="nav-links">
+        <a href="#origins">Origins</a>
+        <a href="#expulsion">Expulsion</a>
+        <a href="#journey">Journey</a>
+        <a href="#aftermath">Aftermath</a>
+        <a href="#glossary">Glossary</a>
+        <a href="#citations">Citations</a>
+      </div>
+    </div>
+  </nav>
+  
+  <header>
+    <h1>The Flight and Expulsion of the Germans</h1>
+    <div class="date">1945 — 1949</div>
+    <div class="scroll-indicator">
+      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </div>
+  </header>
+  
+  <section id="origins">
+    <div class="container">
+      <div class="content">
+        <div class="quote">
+          "Everyone aged 14 to 40 was ordered to clean the streets and fill potholes. As we worked, a Czech guard walked around with a whip, calling us filthy Germans and saying he would make us pay for what he had suffered in the concentration camp."
+          <span class="attribution">—Eva Honzejk, 87, survivor of the German Expulsions</span>
+        </div>
+        <p>TThe Flight and Expulsion of the Germans was an event that followed World War II and the Potsdam Agreement in Eastern Europe, which displaced 12-14 million Germans from 1945 to 1949 due to residual ethnic tensions with the Nazi Party and the atrocities they had committed (Zieger).</p>
+        <p>Local German citizens were discriminated against no matter their political affiliations. In some regions, they were brutally tortured in concentration camps, driven by a raw, unfiltered anger and disgust toward a race now deemed impure. This cycle of vengeance reverberated through European history, tearing families apart and leaving many adrift, stripped of direction and with no possessions to reclaim.</p>
+        <div class = "image-container">
+          <img src="/api/placeholder/1200/400" alt="Pre-war German communities in Eastern Europe" class="image-placeholder">
+        </div>
+        <p>The further local tensions faced by ethnic Germans were like a smoldering wildfire, its embers stoked by years of Nazi oppression and now roaring into an inferno of retribution. Each German family was a dry twig, cast into the blaze, their presence igniting the pent-up rage of neighbors who saw in them not individuals but shadows of swastikas. The air crackled with hostility, a storm of vengeance brewing in every sidelong glance, every looted home, every shouted curse. Like a forest consumed by flames it could not outrun, these communities were scorched by a fury that spared neither the guilty nor the innocent, leaving behind a charred landscape of broken lives and uprooted origins.</p>
+        <p>Yet, to understand how this inferno of retribution came to be, we must analyze the roots of the conflict that stretch back generations to see how the first flames ignited (Flint, AI teaching assistant).</p>
+      </div>
+    </div>
+  </section>
+
+    
+  <section id="origins">
+    <div class="container">
+      <div class="content">
+          <h2>Caught in the Crossfire</h2>
+        <p>Before World War II, ethnic German populations thrived across Eastern Europe, forming vibrant communities in areas such as the Sudetenland of Czechoslovakia, Silesia of Poland, and parts of Hungary. Numbering over three million in the Sudetenland alone, these groups had deep historical roots in their settlements, while also maintaining distinct German cultural identities (Trait). However, this all changed after World War I and the Treaty of Versailles, which saw the rise of nationalist sentiments amongst the Slavic majority, particularly in Czechoslovakia and Poland, fueled by fears of German revanchism, or the worry that the nation would attempt to rectify the perceived injustices due to the massive amounts of territorial loss. Many ethnic Germans were caught in a crossfire between their loyalty to their ancestral homeland and the rising amounts of neighborly discrimination, marginalization, and sporadic violence.</p>
+        <p>The rise of Nazi Germany under Adolf Hitler in 1933 transformed these growing tensions into a larger crisis. Hitler’s expansionist policies, led by his ideology of Lebensraum (living space) as detailed in his autobiography, Mein Kampf, largely targeted the unification of ethnic Germans as a justification for his increasing territorial aggression. Following the 1938 annexation of Sudetenland facilitated by the Munich Agreement – of which many Germans welcomed with open arms - led to the introduction of Nazi propaganda to the other Germanic peoples portrayed these communities as the oppressed minority, which pressured many ethnic Germans to align their political views with the Third Reich. </p>
+        <div class = "image-container">
+          <img src="https://assets.editorial.aetnd.com/uploads/2009/10/adolf-hitler-gettyimages-119505258.jpg?width=3840&height=1920&crop=3840%3A1920%2Csmart&quality=75&auto=webp" alt="Adolf Hitler">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="expulsion">
+    <div class="container">
+      <div class="content">
+        <h2>The Seeds of Exile</h2>
+        <p>Succeeding the death of the Nazi Party leader and the subsequent end of World War II, the
+          European geopolitical landscape was irrevocably altered due to the unfair border distributions of the
+          Potsdam Agreement, decided by the victors of the battle – the United States, Great Britain, and the
+          Soviet Union. The agreement authorized the mass – yet orderly – expulsions of ethnic Germans
+          from Poland, Czechoslovakia, and other Eastern European countries to redraw national boundaries
+          and address the ethnic tensions that had fueled the war. Nevertheless, due to an already hardened
+          distrust by Czechoslovakia and the Big Three due to previous actions in the war, namely the
+          Munich Agreement, the Yalta Conference, and the Molotov-Ribbentrop Pact, along with internal
+          issues like the contested region of Cieszyn Silesia, the two countries were unable to cooperate
+          effectively and the larger powers faced increased doubt due to their poor handling of the border
+          dispute (Lamontagne).</p>
+        <div class = "image-container">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Stars_%26_Stripes_%26_Hitler_Dead2.jpg/800px-Stars_%26_Stripes_%26_Hitler_Dead2.jpg" alt="Hitler is Dead" style="width: 500px; height: auto; display: block; margin: 45px auto">
+        </div>
+
+        <p>There were also numerous underlying conflicts that led to the mass deportations in 1945, namely the secret deal between Hitler and Czechoslovak President Edvard Beneš on September 15, 1938, and the negligence of the Western powers regarding the event. On September 15, 1938, Czechoslovakia’s President bartered 6,000 square kilometers of Czechoslovak land in exchange for the transfer of two million Sudeten Germans back to Germany. Though Hitler never offered a response, Beneš “publicly declared his support for the ‘principle of the transfer of populations’ in September 1941, and then proceeded to lobby the Allies successfully for their approval of the expulsions throughout the war" (Zahra). On the other hand, the Western Allies also showed little regard for the clear violation of human rights that came with the forced German migrations, tending to remain focused on their political agendas instead of maintaining a good relationship with the USSR.<p>
+
+        <p>Yet, the Czechs also had experienced previous conflicts with the Germans. A new “minority problem” had emerged in post WWI  Eastern Europe, with Germans and Jews ranking as the largest minority groups,  Although the newly formed nation-states were pressured into signing minority protection treaties, these agreements were not effectively enforced by the League of Nations, holding little purchase on the ground. Czechoslovakia, while often seen as a liberal and democratic state, implemented a “colonization” strategy to diminish the German minority, including populating German territories with Czech families, firing German civil servants, and closing German schools, along with reclassifying self-declared Germans as Czechoslovak citizens to reduce the official German population in an attempt to create a more ethnically homogeneous state (Zahra).</p>
+
+        <p>Furthermore, the Battle of White Mountain of 1620 “saw the defeat of Czech nobles, who had mostly converted to Protestantism, at the hands of the Catholic forces of Habsburg” (Horel). Since this event, the German-speaking community had been largely accused of oppressing the Czech nation, with the stress continuing to endure despite the passage of time.</p>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-date">1938</div>
+            <p>The Munich Agreement facilitates the annexation of Sudetenland, leading many Germans to welcome Nazi forces with open arms.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">1941</div>
+            <p>President Beneš publicly declares his support for the "principle of the transfer of populations" and begins lobbying Allies for approval of expulsions.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">1945</div>
+            <p>The Potsdam Agreement is signed by the Allied powers, authorizing the "orderly and humane" transfer of German populations from Poland, Czechoslovakia, and Hungary.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">1945</div>
+            <p>The "Wild Expulsions" begin, with ethnic Germans subjected to brutal reprisals and internment in concentration camps.</p>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-date">1945-1947</div>
+            <p>The Beneš decrees authorize confiscation of ethnic German property and their expulsion from Czechoslovakia.</p>
+          </div>
+        </div>
+
+        <h3>The Deathly Decrees</h3>
+        <p>This carelessness resulted in the “Wild Expulsions” of 1945 that saw ethnic Germans subjected to brutal reprisals and internment in concentration camps, driven by the desire for revenge after years of Nazi oppression. These actions were formalized and exacerbated by the Beneš decrees, which were a series of executive orders issued by President Edvard Beneš between 1945 and 1947, which not only authorized the confiscation of ethnic German property and their expulsion from Czechoslovakia, but also the denial of citizenship to those who remained (Naegele). </p>
+        <p>Though these practices were also motivated by both economic and social agendas, their moral and legal foundations were based on the concept of collective guilt (Kollectivschuld) ascribed to the German population, seeing the punishment of their entire race collectively deemed culpable due to the actions of the Nazi Party (Horel). Nevertheless, it is to be noted that though many Germans living in Czechoslovakia did show support for the Third Reich’s actions, Kollectivschuld deemed all Germans guilty despite apparent personal beliefs. These decrees targeted some 3 million Sudeten Germans and tens of thousands of Hungarians after the war, further worsening the humanitarian issues and regional conflicts (Trait).</p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="journey">
+    <div class="container">
+      <div class="content">
+        <h2>Turmoil and Oppression</h2>
+        <p>Several powerful forces drove the ethnic Germans out of their homeland, in regions such as Poland, Czechoslovakia, Hungary, and other places in Eastern Europe. Years of Nazi occupation had by now fueled deep resentment amongst the local populations and wrought brutal events like the Brno Death March in Czechoslovakia in May of 1945, where over 20,000 Germans, including children, women, and the elderly, were escorted on foot out of the country. Many had died by the way of exhaustion, succumbing to the epidemics that spread in the Poherelice camp, while others were even ruthlessly beaten or shot to death by the armed guards (Janicek). The previously mentioned Beneš decrees also played a significant role, practically stripping the Germans of any rights, livelihoods, and possessions. This created an atmosphere of unrelenting hostility, leaving the ethnic Germans with no choice but to flee.</p>
+        <div class="image-container">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Bundesarchiv_Bild_183-1983-0422-315%2C_Umsiedler_auf_dem_G%C3%BCterbahnhof_Berlin-Pankow.jpg/520px-Bundesarchiv_Bild_183-1983-0422-315%2C_Umsiedler_auf_dem_G%C3%BCterbahnhof_Berlin-Pankow.jpg" alt="German refugees on their journey westward" style="width: 700; height: auto;">
+        </div>
+        <p>However, the expulsions of the Germans were going comparatively better in Poland - but they were not off by much. After the Potsdam Conference in 1945, the Poles were instructed to temporarily halt the deportations, allowing for East and West Germany to handle the influx of refugees. Polish officials in the Jelenia Góra District began pressuring ethnic Germans to leave “voluntarily” by implementing policies that mirrored Nazi-era tactics against Jews, leading to the “collective pauperization” of the German race. “Ethnic Germans were forced to pay higher prices for fuel, food, and housing, paid lower wages or no wages at all for work, were not allowed to access their savings in German banks, were forced to wear white armbands to distinguish themselves as German, and were subjected to forced labour, harassment, violence, and robbery" (Lamontagne). </p>
+        <div class="stat-container">
+          <div class="stat-item">
+            <div class="stat-number">12-14</div>
+            <div class="stat-label">Million Germans displaced</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">25%</div>
+            <div class="stat-label">Of Czechoslovakia's population expelled</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-number">1945-49</div>
+            <div class="stat-label">Years of expulsion</div>
+          </div>
+        </div>
+        <h3>A Fragile Haven</h3>
+        <p>For the refugees departing, there was a perceived sense of safety in Germany, despite the devastation that the war had caused. West Germany, under Allied occupation, offered a chance to escape Soviet control, while East Germany, though under Soviet influence, was still seen as a place of refuge from the vengeance of neighboring states. For many, the hope of reuniting with their families or ethnic solidarity far outweighed the uncertainties of their destination.</p>
+        <p>During the process of their journey, many Germans also lost control of their assets and had them confiscated – though they were unable to bring much anyway due to the abruptness of the expulsion order. E. Wollmann, a survivor of the German expulsions, describes that he was warned to be at the train station at 2 a.m. for deportation, yet also recalls feeling no guilt for the actions of the Nazis, as he opposed the regime. Upon arrival at the train station, all personal belongings were confiscated, including cash, documents, and even new clothing, leaving many ethnic Germans with nothing but their names, which made their integration into East or West Germany difficult.</p>
+        <h3>The Weight of the Numbers</h3>
+        <p>The Weight of the Numbers
+          As the Germans migrated to East and West Germany by foot, cart, and train, they faced a new dilemma in their journey: there were simply too many people. In Bavaria (the southern region of West Germany), over 734,000 refugees, evacuees, and IDPs sought refuge in 1945, with many more being sent in 1947, though the majority arrived in 1946. Around 764 organized transports with 777,130 expellees from the Czech Socialist Republic arrived in six different border transit camps. However, the U.S. military government and Bavarian government struggled largely with the process of distributing the refugees in Bavaria (Zieger). 
+          </p>
+      </div>
+    </div>
+  </section>
+  
+  <section id="aftermath">
+    <div class="container">
+      <div class="content">
+        <h2>Eastern Europe's Missing Millions</h2>
+        <p>The mass expulsions of Germans from neighboring countries resulted in a situation where a large portion of the able-bodied workforce was nowhere to be found. “Czechoslovakia found itself in a crisis regarding shortages of workers in mining and glass production. Like the replacement of Germans in Poland by Poles from the East, Germans in the Sudetenland were replaced by migrating Czechs and Slovaks; but unlike the Poles, the resettled Czechs and Slovaks did not come immediately after the Germans were expelled and did not respond as well to their new land and surroundings" (Lamontagne). To put this into perspective, around 12 million people lived in Czechoslovakia during 1945, while almost three million were expelled - an astonishing 25% of the total population. According to Eagle Glassheim, an Associate Professor of History at the University of British Columbia, many Czechs and Slovaks who moved into Sudetenland acted indifferently to their surroundings, constantly neglecting the land and the nearby industries due to the unfamiliarity of their new land.</p>
+        <p>Yet, contrary to many expectations, the majority of German expellees found work relatively quickly after their arrival in the Western zones of Germany. Many of the refugees were previously well-educated and had expertise in crafts, industry, and schooling, which made them highly employable. The economic growth in the Western zones postwar supported their integration, with many former civil servants returning to their state positions (Article 131 of the Basic Law enabled the reintegration of former Nazi Party members into German society and employment). “Admittedly, only a small proportion of the expellees were able to return to the same profession, with the farmers having the hardest time of it; older people had little chance anyway. Unemployment also hit the refugees hard at times; in their case not at the beginning, but later, especially after the currency reform in June 1948” (Zieger).</p>
+        <div class="image-container">
+          <img src="https://kafkadesk.org/wp-content/uploads/2023/03/5bd22-expulsion-germans-czechoslovakia.jpg" alt="Abandoned German villages in Sudetenland" style = "width: 800; height: auto";>
+        </div> 
+        <h3>A Cultural Divide</h3>
+        <p>At the beginning of their resettlement, there were additional cultural differences between the expellees and the locals, mainly regarding living arrangements, traditions, and food. The forced accommodation of the refugees, along with the clash of different cultural practices and the refugees' state support, led to much displeasure, envy, and concern about alienation among the local population, sometimes even resulting in verbal and physical conflict. The refugees, who often viewed their new homes as backward, felt rejected by the locals; however, despite these tensions, there were also considerable amounts of personal help from the locals, and no serious attempts were made to deport the refugees or any specific group, such as the "Prussians" (Zieger).</p>
+
+        <h3>Hope for Regrowth</h3>
+        <p>Following the rash expulsions of the ethnic Germans, a   ssociations were formed in West Germany (Sudetendeutsche Landmannschaft, or the Sudetenland Patriotic Association) and Austria (Verband der Volksdeutschen Landsmannschaften, or the Union of Patriotic German Associations) to represent the interests, benefiting from a West German law passed in May 1952, which granted reparations to the deportees and provided a right to compensation for the losses suffered. On the other side, in the Soviet Bloc, especially communist Czechoslovakia, there was no possibility of compensation due to Cold War tensions, with East Germany remaining silent on the issue, maintaining good relations with Prague. Moreover, the Czech-German Fund for the Future was also created in 1999, which was modeled after funds for Jewish reparations, aimed at discussing potential compensation for the Germans who were forced to work in detention camps and for victims of wrongful imprisonment. However, these efforts failed to lead to largely tangible results (Horel).</p>
+        
+        <h3>Burnt to the Ground</h3>
+        <p>The wildfire of vengeance would rage on until it devoured itself, leaving behind a desolate, unrecognizable expanse. Where once thriving German villages had pulsed with life—centuries of laughter echoing through timbered homes, fields rippling gold under the sun—now sprawled a graveyard of silence: shattered windows gaping like hollow eyes, roofs caved in under the weight of neglect, and acres of once-fertile earth choked with weeds and the ghosts of harvests past. The embers, once spitting fury, dwindled to a smoldering hush, yet the scars seared deep—etched into the cracked soil, branded onto the souls of those who had been fed to the inferno. Though many have fought the fire, the damage had already been done. For Eva Honzejk and countless others, branded "filthy Germans" with sneers that cut like shards of glass, an entire people had been reduced to cinders—their lives pulverized into ash, then swept away by the relentless gales of history, scattering their whispers into oblivion and desolation (Flint, AI teaching assistant).</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="glossary">
+    <div class="container">
+      <div class="content">
+        <h2>Glossary</h2>
+        
+        <div class="glossary-container">
+          <div id="gloss-b" class="glossary-item">
+            <div class="term">Beneš Decrees</div>
+            <div class="definition">A series of executive orders issued by Czechoslovak President Edvard Beneš between 1945 and 1947 that authorized the confiscation of ethnic German property and their expulsion from Czechoslovakia.</div>
+          </div>
+          
+          <div id="gloss-e" class="glossary-item">
+            <div class="term">Expulsion</div>
+            <div class="definition">The forced removal of ethnic Germans from countries in Eastern Europe following World War II, displacing 12-14 million people between 1945 and 1949.</div>
+          </div>
+          
+          <div id="gloss-k" class="glossary-item">
+            <div class="term">Kollektivschuld</div>
+            <div class="definition">The concept of collective guilt, which ascribed responsibility for Nazi crimes to the entire German population regardless of individual actions or beliefs.</div>
+          </div>
+          
+          <div id="gloss-l" class="glossary-item">
+            <div class="term">Lebensraum</div>
+            <div class="definition">German term meaning "living space," a key component of Nazi ideology that justified territorial expansion to gain land for German settlement.</div>
+          </div>
+          
+          <div id="gloss-p" class="glossary-item">
+            <div class="term">Potsdam Agreement</div>
+            <div class="definition">A 1945 agreement between the Allied powers (United States, United Kingdom, and Soviet Union) that authorized the "orderly and humane" transfer of German populations from Poland, Czechoslovakia, and Hungary.</div>
+          </div>
+          
+          <div id="gloss-r" class="glossary-item">
+            <div class="term">Revanchism</div>
+            <div class="definition">A policy of seeking to retaliate or recover lost territory, often referring to the German desire to reclaim lands lost after World War I.</div>
+          </div>
+          
+          <div id="gloss-s" class="glossary-item">
+            <div class="term">Sudetenland</div>
+            <div class="definition">The German-speaking border regions of Czechoslovakia that were annexed by Nazi Germany in 1938 following the Munich Agreement.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section id="citations">
+    <div class="container">
+      <div class="content">
+        <h2>Works Cited</h2>
+        <div class="citations-container">
+          <div class="citation-item">
+            <div class="citation">Flint, AI teaching assistant. "German Migration Article Development and Analysis." Feature Article Writing Feedback, 5 Mar. 2025, Flint. Inc., app.flintk12.com/activity/feature-article-9dde6d/session/c9123a5b-b265-4687-aa44-20faded4603c.
+            </div>
+          </div>
+          
+          <div class="citation-item">
+            <div class="citation">Hitler, Adolf. Mein Kampf. First Mariner Books ed., e-book ed., Houghton      
+              Mifflin, 1943. Epub. </div>
+          </div>
+          
+          <div class="citation-item">
+            <div class="citation">Horel, Catherine. "Expulsion of the Germans of Czechoslovakia after the Second World War." Encyclopédie d'histoire Numérique de l'Europe, Digital Encyclopedia of European History, 22 June 2020, ehne.fr/en/encyclopedia/themes/wars-and-memories/judging-atoning-reconciling/expulsion-germans-czechoslovakia-after-second-world-war.</div>
+          </div>
+          
+          <div class="citation-item">
+            <div class="citation">Lamontagne, Erica. "A Post-World War II Tragedy: The Expulsion of the Germans from Poland and Czechoslovakia, 1945-49." The General Brock University Undergraduate Journal of History, original series, vol. 11, no. 2, 17 Apr. 2017. A Post-World War II Tragedy: The Expulsion of Ethnic Germans From Poland and Czechoslovakia, 1945-49, 17 Apr. 2017, pp. 38-47. PDF. Abstract.</div>
+          </div>
+          
+          <div class="citation-item">
+            <div class="citation">Naegele, Jolyon. “Czech Republic: The Benes Decrees -- How Did They Come to Be and What Do They Mandate?” RadioFreeEurope/RadioLiberty, RFE/RL, 9 Apr. 2008, www.rferl.org/a/1098965.html. Accessed 3 Mar. 2025.</div>
+          </div>
+          
+          <div class="citation-item">
+            <div class="citation">Trait, Robert. "The Germans and Czechs Trying to Deal with Ghosts of the Past." The Guardian, Guardian News and Media, 11 Nov. 2016, www.theguardian.com/world/2016/nov/11/germans-and-czechs-mass-expulsion-trying-to-deal-with-ghosts-of-the-past.</div>
+          </div>
+          
+          <div class="citation-item">
+            <div class="citation"> Zahra, Tara. "A Brutal Peace: On the Postwar Expulsions of Germans." The Nation, The Nation, 29 June 2015, www.thenation.com/article/archive/brutal-peace-postwar-expulsions-germans/.</div>
+          </div>
+          
+          <div class="citation-item">
+            <div class="citation">Zieger, Walter. "En: Refugees and Expellees." EN:Refugees and Expellees - Historisches Lexikon Bayerns, www.historisches-lexikon-bayerns.de/Lexikon/EN:Refugees_and_Expellees. Accessed 14 Feb. 2025.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <p>© Hayden Chen .space | A Historical Documentation</p>
+      <p>Created and Designed by Hayden Chen</p>
+    </div>
+  </footer>
+
+  <script>
+   document.addEventListener('DOMContentLoaded', function() {
+  // Initial animations
+  setTimeout(() => {
+    document.querySelector('header h1').classList.add('show');
+  }, 300);
+  
+  setTimeout(() => {
+    document.querySelector('header .date').classList.add('show');
+  }, 600);
+  
+  // Scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -100px 0px"
+  };
+  
+  const observer = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  // Observe all elements that should animate
+  document.querySelectorAll('h2, h3, p, .quote, .image-container, .timeline-item, .stat-item, .glossary-item, .citation-item').forEach(el => {
+    observer.observe(el);
+  });
+});document.addEventListener('DOMContentLoaded', function() {
+  // Initial animations
+  setTimeout(() => {
+    document.querySelector('header h1').classList.add('show');
+  }, 300);
+  
+  setTimeout(() => {
+    document.querySelector('header .date').classList.add('show');
+  }, 600);
+  
+  // Scroll animations
+  const observerOptions = {
+    threshold: 0.1,
+    rootMargin: "0px 0px -100px 0px"
+  };
+  
+  const observer = new IntersectionObserver(function(entries, observer) {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('show');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, observerOptions);
+  
+  // Observe all elements that should animate
+  document.querySelectorAll('h2, h3, p, .quote, .image-container, .timeline-item, .stat-item, .glossary-item, .citation-item').forEach(el => {
+    observer.observe(el);
+  });
+});
+  </script>
+</body>
+</html>
