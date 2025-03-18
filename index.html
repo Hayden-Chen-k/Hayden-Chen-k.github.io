@@ -24,7 +24,7 @@
     .container {
       max-width: 1400px;
       margin: 0 auto;
-      padding: 0 50px;
+      padding: 0 30px;
     }
     
     header {
@@ -38,6 +38,14 @@
       background-color: #f0f0f0;
     }
     
+    figcaption {
+  font-size: 16px;
+  color: #666;
+  text-align: center;
+  margin-top: 20px;
+  font-style: italic;
+}
+
     nav {
       position: fixed;
       top: 0;
@@ -49,12 +57,7 @@
       z-index: 100;
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
     }
-    
-    nav .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+  
     
     .logo {
       font-size: 24px;
@@ -173,7 +176,7 @@
     }
     
     p {
-      font-size: 20ipx;
+      font-size: 20px;
       margin-bottom: 40px;
       opacity: 0;
       transform: translateY(20px);
@@ -212,7 +215,7 @@
     }
     
     .image-container {
-      width: 800px;
+      width: 750px;
       height: auto;
       overflow: hidden;
       margin: 60px auto;
@@ -224,7 +227,8 @@
       height: auto;
       max-width: 100%;
       display: block;
-     transition: opacity 1s ease, transform 1s ease;
+     transition
+     : opacity 1s ease, transform 1s ease;
     }
     
     .image-container.show {
@@ -421,26 +425,225 @@
   background-color: #ddd;
 }
 
+.info-table {
+  width: 80%;
+  max-width: 800px;
+  margin: 20px auto;
+  border-collapse: collapse;
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.info-table th, .info-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.info-table td {
+  color: #333;
+}
+
+.info-table tr:last-child td {
+  border-bottom: none;
+}
+
+.info-table tr:nth-child(even) {
+  background: rgba(240, 240, 240, 0.5);
+}
+
+.nav-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100vh;
+  background-color: rgba(245, 245, 245, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  transform: translateX(100%);
+  transition: transform 0.4s ease;
+  z-index: 100;
+  padding: 40px;
+  color: #333;
+  font-family: 'EB Garamond', serif;
+}
+
+.nav-sidebar.active {
+  transform: translateX(0);
+}
+
+nav .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative; 
+}
+
+.nav-content {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.nav-content h3 {
+  font-size: 32px;
+  font-weight: 400;
+  margin-bottom: 40px;
+  color: #666;
+}
+
+.nav-section {
+  margin-bottom: 40px;
+}
+
+.nav-section h4 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 20px;
+  color: #999;
+}
+
+.nav-section a {
+  display: block;
+  text-decoration: none;
+  color: #333;
+  font-size: 20px;
+  padding: 10px 0;
+  transition: color 0.3s ease, padding-left 0.3s ease;
+}
+
+.nav-section a:hover {
+  color: #666;
+  padding-left: 10px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-family: 'EB Garamond', serif;
+  font-size: 16px;
+  color: #666;
+  cursor: pointer;
+  align-self: flex-end;
+  padding: 10px 0;
+  transition: color 0.3s ease;
+}
+
+.close-btn:hover {
+  color: #333;
+}
+
+/* Overlay when sidebar is open */
+body.nav-open::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+body.nav-open::before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.nav-toggle {
+  background: none;
+  border: none;
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease, opacity 0.3s ease;  
+  z-index: 102; 
+}
+
+.nav-sidebar.active ~ .nav-toggle {
+  opacity: 0;
+  pointer-events: none; 
+}
+.nav-toggle {
+  opacity: 1;
+}
+
+.nav-toggle:hover {
+  color: #666;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 400;
+  letter-spacing: 1px;
+  z-index: 101;
+  position: relative;
+}
+
+.book-container {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 40px;
+}
+
+.book {
+  text-align: center;
+  max-width: 300px;
+}
+
+.book img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.book p {
+  font-size: 18px;
+  font-weight: bold;
+}
+
   </style>
 </head>
 <body>
   <nav>
-    <div class="container">
-      <div class="logo">The Flight and Expulsion of the Germans</div>
-      <div class="nav-links">
-        <a href="#origins">Origins</a>
-        <a href="#expulsion">Expulsion</a>
-        <a href="#journey">Journey</a>
-        <a href="#aftermath">Aftermath</a>
-        <a href="#glossary">Glossary</a>
-        <a href="#citations">Citations</a>
+  <div class="container">
+    <div class="logo">The Flight and Expulsion of the Germans</div>
+    <div class="nav-sidebar">
+      <div class="nav-content">
+        <h3>Navigation</h3>
+        <div class="nav-section">
+          <h4>Story</h4>
+          <a href="#origins">Origins</a>
+          <a href="#expulsion">Expulsion</a>
+          <a href="#journey">Journey</a>
+          <a href="#aftermath">Aftermath</a>
+          <a href="#1945-Czechoslovakia">1945-Czechoslovakia</a>
+        </div>
+        <div class="nav-section">
+          <h4>Resources</h4>
+          <a href="#book-recommendations">Book Recommendations</a>
+          <a href="#glossary">Glossary</a>
+          <a href="#citations">Citations</a>
+        </div>
+        <button class="close-btn">Close</button>
       </div>
     </div>
-  </nav>
-  
+    <button class="nav-toggle">index</button>
+  </div>
+</nav>
   <header>
-    <h1>The Flight and Expulsion of the Germans</h1>
-    <div class="date">1945 — 1949</div>
+    <h1>The Scorched Earth: Echoes of the lost</h1>
+
+    <div class="date">The race that were burnt to the ground in an act of vengeance against one man</div>
     <div class="scroll-indicator">
       <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -457,9 +660,6 @@
         </div>
         <p>TThe Flight and Expulsion of the Germans was an event that followed World War II and the Potsdam Agreement in Eastern Europe, which displaced 12-14 million Germans from 1945 to 1949 due to residual ethnic tensions with the Nazi Party and the atrocities they had committed (Zieger).</p>
         <p>Local German citizens were discriminated against no matter their political affiliations. In some regions, they were brutally tortured in concentration camps, driven by a raw, unfiltered anger and disgust toward a race now deemed impure. This cycle of vengeance reverberated through European history, tearing families apart and leaving many adrift, stripped of direction and with no possessions to reclaim.</p>
-        <div class = "image-container">
-          <img src="/api/placeholder/1200/400" alt="Pre-war German communities in Eastern Europe" class="image-placeholder">
-        </div>
         <p>The further local tensions faced by ethnic Germans were like a smoldering wildfire, its embers stoked by years of Nazi oppression and now roaring into an inferno of retribution. Each German family was a dry twig, cast into the blaze, their presence igniting the pent-up rage of neighbors who saw in them not individuals but shadows of swastikas. The air crackled with hostility, a storm of vengeance brewing in every sidelong glance, every looted home, every shouted curse. Like a forest consumed by flames it could not outrun, these communities were scorched by a fury that spared neither the guilty nor the innocent, leaving behind a charred landscape of broken lives and uprooted origins.</p>
         <p>Yet, to understand how this inferno of retribution came to be, we must analyze the roots of the conflict that stretch back generations to see how the first flames ignited (Flint, AI teaching assistant).</p>
       </div>
@@ -475,6 +675,7 @@
         <p>The rise of Nazi Germany under Adolf Hitler in 1933 transformed these growing tensions into a larger crisis. Hitler’s expansionist policies, led by his ideology of Lebensraum (living space) as detailed in his autobiography, Mein Kampf, largely targeted the unification of ethnic Germans as a justification for his increasing territorial aggression. Following the 1938 annexation of Sudetenland facilitated by the Munich Agreement – of which many Germans welcomed with open arms - led to the introduction of Nazi propaganda to the other Germanic peoples portrayed these communities as the oppressed minority, which pressured many ethnic Germans to align their political views with the Third Reich. </p>
         <div class = "image-container">
           <img src="https://assets.editorial.aetnd.com/uploads/2009/10/adolf-hitler-gettyimages-119505258.jpg?width=3840&height=1920&crop=3840%3A1920%2Csmart&quality=75&auto=webp" alt="Adolf Hitler">
+          <figcaption>"Adolf Hitler." History.com, A&E Television Networks, 2009, assets.editorial.aetnd.com/uploads/2009/10/adolf-hitler-gettyimages-119505258.jpg. Accessed 16 Mar. 2025.</figcaption>
         </div>
       </div>
     </div>
@@ -498,6 +699,7 @@
           dispute (Lamontagne).</p>
         <div class = "image-container">
           <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Stars_%26_Stripes_%26_Hitler_Dead2.jpg/800px-Stars_%26_Stripes_%26_Hitler_Dead2.jpg" alt="Hitler is Dead" style="width: 500px; height: auto; display: block; margin: 45px auto">
+          <figcaption>"Front page of the US Armed Forces newspaper Stars and Stripes on 2 May 1945" Wikimedia Commons, 7 May 1945, upload.wikimedia.org/wikipedia/commons/thumb/5/56/Stars_%26_Stripes_%26_Hitler_Dead2.jpg/800px-Stars_%26_Stripes_%26_Hitler_Dead2.jpg. Accessed 16 Mar. 2025.</figcaption>
         </div>
 
         <p>There were also numerous underlying conflicts that led to the mass deportations in 1945, namely the secret deal between Hitler and Czechoslovak President Edvard Beneš on September 15, 1938, and the negligence of the Western powers regarding the event. On September 15, 1938, Czechoslovakia’s President bartered 6,000 square kilometers of Czechoslovak land in exchange for the transfer of two million Sudeten Germans back to Germany. Though Hitler never offered a response, Beneš “publicly declared his support for the ‘principle of the transfer of populations’ in September 1941, and then proceeded to lobby the Allies successfully for their approval of the expulsions throughout the war" (Zahra). On the other hand, the Western Allies also showed little regard for the clear violation of human rights that came with the forced German migrations, tending to remain focused on their political agendas instead of maintaining a good relationship with the USSR.<p>
@@ -542,7 +744,8 @@
         <h2>Turmoil and Oppression</h2>
         <p>Several powerful forces drove the ethnic Germans out of their homeland, in regions such as Poland, Czechoslovakia, Hungary, and other places in Eastern Europe. Years of Nazi occupation had by now fueled deep resentment amongst the local populations and wrought brutal events like the Brno Death March in Czechoslovakia in May of 1945, where over 20,000 Germans, including children, women, and the elderly, were escorted on foot out of the country. Many had died by the way of exhaustion, succumbing to the epidemics that spread in the Poherelice camp, while others were even ruthlessly beaten or shot to death by the armed guards (Janicek). The previously mentioned Beneš decrees also played a significant role, practically stripping the Germans of any rights, livelihoods, and possessions. This created an atmosphere of unrelenting hostility, leaving the ethnic Germans with no choice but to flee.</p>
         <div class="image-container">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Bundesarchiv_Bild_183-1983-0422-315%2C_Umsiedler_auf_dem_G%C3%BCterbahnhof_Berlin-Pankow.jpg/520px-Bundesarchiv_Bild_183-1983-0422-315%2C_Umsiedler_auf_dem_G%C3%BCterbahnhof_Berlin-Pankow.jpg" alt="German refugees on their journey westward" style="width: 700; height: auto;">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/Bundesarchiv_Bild_183-1983-0422-315%2C_Umsiedler_auf_dem_G%C3%BCterbahnhof_Berlin-Pankow.jpg/520px-Bundesarchiv_Bild_183-1983-0422-315%2C_Umsiedler_auf_dem_G%C3%BCterbahnhof_Berlin-Pankow.jpg" alt="German refugees on their journey westward" style="width: 700; height: auto">
+          <figcaption>"German expellees, 1946" Wikimedia Commons, 1945, upload.wikimedia.org/wikipedia/commons/thumb/5/57/Bundesarchiv_Bild_183-1983-0422-315%2C_Umsiedler_auf_dem_G%C3%BCterbahnhof_Berlin-Pankow.jpg/520px-Bundesarchiv_Bild_183-1983-0422-315%2C_Umsiedler_auf_dem_G%C3%BCterbahnhof_Berlin-Pankow.jpg. Accessed 18 Mar. 2025.</figcaption>
         </div>
         <p>However, the expulsions of the Germans were going comparatively better in Poland - but they were not off by much. After the Potsdam Conference in 1945, the Poles were instructed to temporarily halt the deportations, allowing for East and West Germany to handle the influx of refugees. Polish officials in the Jelenia Góra District began pressuring ethnic Germans to leave “voluntarily” by implementing policies that mirrored Nazi-era tactics against Jews, leading to the “collective pauperization” of the German race. “Ethnic Germans were forced to pay higher prices for fuel, food, and housing, paid lower wages or no wages at all for work, were not allowed to access their savings in German banks, were forced to wear white armbands to distinguish themselves as German, and were subjected to forced labour, harassment, violence, and robbery" (Lamontagne). </p>
         <div class="stat-container">
@@ -564,7 +767,11 @@
         <p>During the process of their journey, many Germans also lost control of their assets and had them confiscated – though they were unable to bring much anyway due to the abruptness of the expulsion order. E. Wollmann, a survivor of the German expulsions, describes that he was warned to be at the train station at 2 a.m. for deportation, yet also recalls feeling no guilt for the actions of the Nazis, as he opposed the regime. Upon arrival at the train station, all personal belongings were confiscated, including cash, documents, and even new clothing, leaving many ethnic Germans with nothing but their names, which made their integration into East or West Germany difficult.</p>
         <h3>The Weight of the Numbers</h3>
         <p>The Weight of the Numbers
-          As the Germans migrated to East and West Germany by foot, cart, and train, they faced a new dilemma in their journey: there were simply too many people. In Bavaria (the southern region of West Germany), over 734,000 refugees, evacuees, and IDPs sought refuge in 1945, with many more being sent in 1947, though the majority arrived in 1946. Around 764 organized transports with 777,130 expellees from the Czech Socialist Republic arrived in six different border transit camps. However, the U.S. military government and Bavarian government struggled largely with the process of distributing the refugees in Bavaria (Zieger). 
+          As the Germans migrated to East and West Germany by foot, cart, and train, they faced a new dilemma in their journey: there were simply too many people. In Bavaria (the southern region of West Germany), over 734,000 refugees, evacuees, and internally displaced persons () sought refuge in 1945, with many more being sent in 1947, though the majority arrived in 1946. Around 764 organized transports with 777,130 expellees from the Czech Socialist Republic arrived in six different border transit camps. However, the U.S. military government and Bavarian government struggled largely with the process of distributing the refugees in Bavaria (Zieger). 
+          <div class="image-container">
+            <img src="https://www.historisches-lexikon-bayerns.de/images/f/ff/Artikel_46038_bilder_value_2_fluechtlinge2.jpg" style="width: 580px; height: auto; display: block; margin: 45px auto" alt="German refugees in Bavaria">
+            <figcaption>"Origin of expellees in Bavaria" Historisches Lexikon Bayerns, Bayerische Landesgeschichte, 1945, www.historisches-lexikon-bayerns.de/images/f/ff/Artikel_46038_bilder_value_2_fluechtlinge2.jpg. Accessed 17 Mar. 2025.</figcaption>
+          </div>
           </p>
       </div>
     </div>
@@ -578,6 +785,7 @@
         <p>Yet, contrary to many expectations, the majority of German expellees found work relatively quickly after their arrival in the Western zones of Germany. Many of the refugees were previously well-educated and had expertise in crafts, industry, and schooling, which made them highly employable. The economic growth in the Western zones postwar supported their integration, with many former civil servants returning to their state positions (Article 131 of the Basic Law enabled the reintegration of former Nazi Party members into German society and employment). “Admittedly, only a small proportion of the expellees were able to return to the same profession, with the farmers having the hardest time of it; older people had little chance anyway. Unemployment also hit the refugees hard at times; in their case not at the beginning, but later, especially after the currency reform in June 1948” (Zieger).</p>
         <div class="image-container">
           <img src="https://kafkadesk.org/wp-content/uploads/2023/03/5bd22-expulsion-germans-czechoslovakia.jpg" alt="Abandoned German villages in Sudetenland" style = "width: 800; height: auto";>
+          <figcaption>"On this Day, in 1946: Czechoslovakia started the forced deportation of ethnic Germans" Kafkadesk, Mar. 2023, kafkadesk.org/wp-content/uploads/2023/03/5bd22-expulsion-germans-czechoslovakia.jpg. Accessed 18 Mar. 2025.</figcaption>
         </div> 
         <h3>A Cultural Divide</h3>
         <p>At the beginning of their resettlement, there were additional cultural differences between the expellees and the locals, mainly regarding living arrangements, traditions, and food. The forced accommodation of the refugees, along with the clash of different cultural practices and the refugees' state support, led to much displeasure, envy, and concern about alienation among the local population, sometimes even resulting in verbal and physical conflict. The refugees, who often viewed their new homes as backward, felt rejected by the locals; however, despite these tensions, there were also considerable amounts of personal help from the locals, and no serious attempts were made to deport the refugees or any specific group, such as the "Prussians" (Zieger).</p>
@@ -590,6 +798,91 @@
       </div>
     </div>
   </section>
+
+  <section id="1945-Czechoslovakia">
+    <div class="container">
+      <div class="content">
+        <h2>Czechoslovakia in 1945</h2>
+        <table class="info-table">
+          <tr>
+            <th>Category</th>
+            <th>Details</th>
+          </tr>
+          <tr>
+            <td>Official Name</td>
+            <td>Czechoslovak Republic (ČSR)</td>
+          </tr>
+          <tr>
+            <td>Capital</td>
+            <td>Prague</td>
+          </tr>
+          <tr>
+            <td>Type of Government</td>
+            <td>Coalition Government (Democratic with Communist Influence)</td>
+          </tr>
+          <tr>
+            <td>Head of State/Government</td>
+            <td>Edvard Beneš (President), Zdeněk Fierlinger</td>
+          </tr>
+          <tr>
+            <td>Population</td>
+            <td>Approximately 13–14 million</td>
+          </tr>
+          <tr>
+            <td>Major Language(s)</td>
+            <td>Czech, Slovak</td>
+          </tr>
+          <tr>
+            <td>Major Ethnic Group(s)</td>
+            <td>Czechs, Slovaks</td>
+          </tr>
+          <tr>
+            <td>Ethnic Minorities</td>
+            <td>Germans (remaining), Hungarians, Ruthenians, Poles, Jews</td>
+          </tr>
+          <tr>
+            <td>Major Religion(s)</td>
+            <td>Roman Catholicism, Protestantis</td>
+          </tr>
+          <tr>
+            <td>GDP per Capita</td>
+            <td>Not specified (moderate, industrialized but war-damaged)</td>
+          </tr>
+          <tr>
+            <td>Major Exports</td>
+            <td>Machinery, manufactured goods</td>
+          </tr>
+          <tr>
+            <td>Major Imports</td>
+            <td>Iron, non-ferrous ores, grains</td>
+          </tr>
+          <tr>
+            <td>Major Industries</td>
+            <td>Manufacturing (machinery, metallurgy, textiles), chemicals, food processing</td>
+          </tr>
+        </table>
+        <figcaption> Source: “Czechoslovakia.” Wikipedia, Wikimedia Foundation, 13 Mar. 2025, en.wikipedia.org/wiki/Czechoslovakia. </figcaption>
+      </div>
+    </div>
+  </section>
+
+  <section id="book-recommendations">
+    <div class="container">
+      <div class="content">
+        <h2>Book Recommendations</h2>
+        <div class="book-container">
+          <div class="book" style="margin: 0 20px;">
+            <img src="https://m.media-amazon.com/images/I/612lqGvNJ4L._AC_UF350,350_QL50_.jpg" alt="Orderly and Humane: The Expulsion of the Germans after the Second World War" style="width: 200px;">
+            <p>Orderly and Humane: The Expulsion of the Germans after the Second World War</p>
+          </div>
+          <div class="book" style="margin: 0 20px;">
+            <img src="https://m.media-amazon.com/images/I/71vs2aM1KlL._AC_UF1000,1000_QL80_.jpg" alt="Heimat, Loss and Identity: Flight and Expulsion in German Literature from the 1950s to the Present" style="width: 200px;">
+            <p>Heimat, Loss and Identity: Flight and Expulsion in German Literature from the 1950s to the Present</p>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
 
   <section id="glossary">
     <div class="container">
@@ -604,7 +897,12 @@
           
           <div id="gloss-e" class="glossary-item">
             <div class="term">Expulsion</div>
-            <div class="definition">The forced removal of ethnic Germans from countries in Eastern Europe following World War II, displacing 12-14 million people between 1945 and 1949.</div>
+            <div class="definition">The act of forcing someone to leave a place or organization.</div>
+          </div>
+
+          <div id="gloss-e" class="glossary-item">
+            <div class="term">Expellees</div>
+            <div class="definition">Individuals forcibly removed from their native lands, often due to war or political upheaval.</div>
           </div>
           
           <div id="gloss-k" class="glossary-item">
@@ -616,6 +914,11 @@
             <div class="term">Lebensraum</div>
             <div class="definition">German term meaning "living space," a key component of Nazi ideology that justified territorial expansion to gain land for German settlement.</div>
           </div>
+
+          <div id="gloss-l" class="glossary-item">
+            <div class="term">Molotov-Ribbentrop Pact</div>
+            <div class="definition">A non-aggression treaty signed between Nazi Germany and the Soviet Union in 1939, which included a secret protocol dividing Eastern Europe into spheres of influence. 1  Essentially it was an agreement that neither country would attack the other, and a secret agreement to divide up the land between them. 2 </div>
+        </div>
           
           <div id="gloss-p" class="glossary-item">
             <div class="term">Potsdam Agreement</div>
@@ -631,6 +934,13 @@
             <div class="term">Sudetenland</div>
             <div class="definition">The German-speaking border regions of Czechoslovakia that were annexed by Nazi Germany in 1938 following the Munich Agreement.</div>
           </div>
+
+          <div id="gloss-s" class="glossary-item">
+            <div class="term">Yalta Conference </div>
+            <div class="definition">A World War II meeting in February 1945 where the leaders of the United States, the United Kingdom, and the Soviet Union discussed the postwar reorganization of Germany and Europe.</div>
+
+
+
         </div>
       </div>
     </div>
@@ -681,28 +991,42 @@
   
   <footer>
     <div class="container">
-      <p>© Hayden Chen .space | A Historical Documentation</p>
+      <p>© Hayden Chen | A Historical Documentation</p>
       <p>Created and Designed by Hayden Chen</p>
-    </div>
+    </div> 
   </footer>
 
-  <script>
-   document.addEventListener('DOMContentLoaded', function() {
-  // Initial animations
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+  console.log('DOM fully loaded and parsed');
+
+  // Initial header animations (unchanged)
   setTimeout(() => {
-    document.querySelector('header h1').classList.add('show');
+    const headerH1 = document.querySelector('header h1');
+    if (headerH1) {
+      headerH1.classList.add('show');
+      console.log('Header h1 animation triggered');
+    } else {
+      console.error('Header h1 not found');
+    }
   }, 300);
-  
+
   setTimeout(() => {
-    document.querySelector('header .date').classList.add('show');
+    const headerDate = document.querySelector('header .date');
+    if (headerDate) {
+      headerDate.classList.add('show');
+      console.log('Header date animation triggered');
+    } else {
+      console.error('Header date not found');
+    }
   }, 600);
-  
-  // Scroll animations
+
+  // Scroll animations (unchanged)
   const observerOptions = {
     threshold: 0.1,
     rootMargin: "0px 0px -100px 0px"
   };
-  
+
   const observer = new IntersectionObserver(function(entries, observer) {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -711,41 +1035,63 @@
       }
     });
   }, observerOptions);
-  
-  // Observe all elements that should animate
+
   document.querySelectorAll('h2, h3, p, .quote, .image-container, .timeline-item, .stat-item, .glossary-item, .citation-item').forEach(el => {
     observer.observe(el);
   });
-});document.addEventListener('DOMContentLoaded', function() {
-  // Initial animations
-  setTimeout(() => {
-    document.querySelector('header h1').classList.add('show');
-  }, 300);
-  
-  setTimeout(() => {
-    document.querySelector('header .date').classList.add('show');
-  }, 600);
-  
-  // Scroll animations
-  const observerOptions = {
-    threshold: 0.1,
-    rootMargin: "0px 0px -100px 0px"
-  };
-  
-  const observer = new IntersectionObserver(function(entries, observer) {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('show');
-        observer.unobserve(entry.target);
+
+  // Navigation sidebar functionality
+  const navToggle = document.querySelector('.nav-toggle');
+  const navSidebar = document.querySelector('.nav-sidebar');
+  const body = document.body;
+  const closeBtn = document.querySelector('.close-btn');
+
+  // Debug: Check if elements are found
+  if (navToggle) {
+    console.log('Nav toggle button found');
+  } else {
+    console.error('Nav toggle button not found');
+  }
+  if (navSidebar) {
+    console.log('Nav sidebar found');
+  } else {
+    console.error('Nav sidebar not found');
+  }
+  if (closeBtn) {
+    console.log('Close button found');
+  } else {
+    console.error('Close button not found');
+  }
+
+  if (navToggle && navSidebar && closeBtn) {
+    // Toggle sidebar on index button click
+    navToggle.addEventListener('click', function(e) {
+      e.preventDefault(); // Prevent any default button behavior
+      console.log('Index button clicked');
+      navSidebar.classList.toggle('active');
+      body.classList.toggle('nav-open');
+      console.log('Sidebar active state:', navSidebar.classList.contains('active'));
+    });
+
+    // Close sidebar on close button click
+    closeBtn.addEventListener('click', function() {
+      console.log('Close button clicked');
+      navSidebar.classList.remove('active');
+      body.classList.remove('nav-open');
+    });
+
+    // Close sidebar when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!navSidebar.contains(e.target) && !navToggle.contains(e.target) && navSidebar.classList.contains('active')) {
+        console.log('Clicked outside sidebar');
+        navSidebar.classList.remove('active');
+        body.classList.remove('nav-open');
       }
     });
-  }, observerOptions);
-  
-  // Observe all elements that should animate
-  document.querySelectorAll('h2, h3, p, .quote, .image-container, .timeline-item, .stat-item, .glossary-item, .citation-item').forEach(el => {
-    observer.observe(el);
-  });
+  } else {
+    console.error('Required navigation elements missing');
+  }
 });
-  </script>
+</script>
 </body>
 </html>
