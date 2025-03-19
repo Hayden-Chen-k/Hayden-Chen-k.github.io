@@ -604,6 +604,7 @@ body.nav-open::before {
   width: 100%;
   height: auto;
   margin-bottom: 20px;
+  margin-left: 20px;
 }
 
 .book p {
@@ -611,45 +612,236 @@ body.nav-open::before {
   font-weight: bold;
 }
 
+/* Style the container for navigation buttons */
+.nav-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Shared styles for both buttons */
+.nav-button {
+  background: none;
+  border: none;
+  font-family: 'EB Garamond', serif;
+  font-size: 20px;
+  color: #333;
+  cursor: pointer;
+  padding: 10px;
+  transition: color 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-button:hover {
+  color: #666;
+}
+
+/* Hide nav-buttons when sidebar is active */
+.nav-sidebar.active ~ .nav-buttons {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-color: #333;
+  color: #f5f5f5;
+}
+
+body.dark-mode header {
+  background-color: #222;
+}
+
+body.dark-mode section:nth-child(even) {
+  background-color: #444;
+}
+
+body.dark-mode .quote {
+  color: #ccc;
+  border-left-color: #ccc;
+}
+
+body.dark-mode .nav-sidebar {
+  background-color: rgba(50, 50, 50, 0.95);
+  color: #f5f5f5;
+}
+
+body.dark-mode nav {
+  background-color: rgba(50, 50, 50, 0.9);
+}
+
+body.dark-mode .nav-button {
+  color: #f5f5f5;
+}
+
+body.dark-mode .nav-button:hover {
+  color: #ccc;
+}
+
+body.dark-mode .logo {
+  color: #f5f5f5;
+}
+/* Icon container */
+.mode-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+/* Icon styles */
+.moon-icon, .sun-icon {
+  width: 100%;
+  height: 100%;
+  stroke: #333; /* Dark color for light mode */
+}
+
+/* Adjust icon color in dark mode */
+body.dark-mode .moon-icon, body.dark-mode .sun-icon {
+  stroke: #f5f5f5; /* Light color for dark mode */
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+/* Icon container */
+.mode-icon {
+  display: inline-block;
+  width: 24px;
+  height: 24px;
+}
+
+/* Icon styles */
+.moon-icon, .sun-icon {
+  width: 100%;
+  height: 100%;
+  stroke: #333; /* Dark color for light mode */
+}
+
+/* Adjust icon color in dark mode */
+body.dark-mode .moon-icon, body.dark-mode .sun-icon {
+  stroke: #f5f5f5; /* Light color for dark mode */
+}
+
+/* Dark mode toggle button */
+.dark-mode-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+header {
+  background-image: url('https://bilder.deutschlandfunk.de/FI/LE/_9/39/FILE_9398a33eebf8d522f5c86c154b34bb2c/sudetendeutsche-l-jpg-100-1920x1080.jpg');
+  background-size: cover;
+  background-position: center;
+  /* Apply blur and opacity */
+  position: relative;
+  overflow: hidden;
+}
+
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: inherit;
+  filter: blur(8px); /* Adjust blur amount as needed */
+  opacity: 0.8; /* Adjust opacity between 0 and 1 */
+  z-index: 1;
+}
+
+header > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Additional styling */
+header {
+  padding: 20px;
+  color: white;
+  text-align: center;
+  min-height: 200px;
+}
+
+.date {
+  margin: 10px 0;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+
   </style>
 </head>
 <body>
   <nav>
-  <div class="container">
-    <div class="logo">The Flight and Expulsion of the Germans</div>
-    <div class="nav-sidebar">
-      <div class="nav-content">
-        <h3>Navigation</h3>
-        <div class="nav-section">
-          <h4>Story</h4>
-          <a href="#origins">Origins</a>
-          <a href="#expulsion">Expulsion</a>
-          <a href="#journey">Journey</a>
-          <a href="#aftermath">Aftermath</a>
-          <a href="#1945-Czechoslovakia">1945-Czechoslovakia</a>
+    <div class="container">
+      <div class="logo">The Flight and Expulsion of the Germans</div>
+      <div class="nav-sidebar">
+        <div class="nav-content">
+          <h3>Navigation</h3>
+          <div class="nav-section">
+            <h4>Story</h4>
+            <a href="#origins">Origins</a>
+            <a href="#expulsion">Expulsion</a>
+            <a href="#journey">Journey</a>
+            <a href="#aftermath">Aftermath</a>
+            <a href="#1945-Czechoslovakia">1945-Czechoslovakia</a>
+          </div>
+          <div class="nav-section">
+            <h4>Resources</h4>
+            <a href="#book-recommendations">Book Recommendations</a>
+            <a href="#glossary">Glossary</a>
+            <a href="#citations">Citations</a>
+          </div>
+          <button class="close-btn">Close</button>
         </div>
-        <div class="nav-section">
-          <h4>Resources</h4>
-          <a href="#book-recommendations">Book Recommendations</a>
-          <a href="#glossary">Glossary</a>
-          <a href="#citations">Citations</a>
-        </div>
-        <button class="close-btn">Close</button>
+      </div>
+      <div class="nav-buttons">
+        <button class="nav-button dark-mode-toggle" aria-label="Toggle dark mode">
+          <span class="mode-icon">
+            <!-- Moon icon (visible in light mode) -->
+            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <!-- Sun icon (visible in dark mode, hidden initially) -->
+            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: none;">
+              <circle cx="12" cy="12" r="5"></circle>
+              <line x1="12" y1="1" x2="12" y2="3"></line>
+              <line x1="12" y1="21" x2="12" y2="23"></line>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+              <line x1="1" y1="12" x2="3" y2="12"></line>
+              <line x1="21" y1="12" x2="23" y2="12"></line>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
+          </span>
+        </button>
+        <button class="nav-button nav-toggle">index</button>
       </div>
     </div>
-    <button class="nav-toggle">index</button>
-  </div>
-</nav>
-  <header>
-    <h1>The Scorched Earth: Echoes of the lost</h1>
-
+  </nav>
+  <header style="background-image: url('https://bilder.deutschlandfunk.de/FI/LE/_9/39/FILE_9398a33eebf8d522f5c86c154b34bb2c/sudetendeutsche-l-jpg-100-1920x1080.jpg'); background-size: cover; background-position: center;">
+    <h1>The Scorched Earth: Echoes of the Lost</h1>
     <div class="date">The race that were burnt to the ground in an act of vengeance against one man</div>
     <div class="scroll-indicator">
-      <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="#333" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 5V19M12 19L19 12M12 19L5 12" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
     </div>
   </header>
+
+  <figcaption style = "margin-bottom: 20px;">"Sudeten Germans were allowed to take 40 kilograms of luggage per person during their expulsion from Czechoslovakia in 1946. (picture alliance / CTK)", https://bilder.deutschlandfunk.de/FI/LE/_9/39/FILE_9398a33eebf8d522f5c86c154b34bb2c/sudetendeutsche-l-jpg-100-1920x1080.jpg. Accessed 19 Mar. 2025.
+</figcaption>
   
   <section id="origins">
     <div class="container">
@@ -871,12 +1063,12 @@ body.nav-open::before {
       <div class="content">
         <h2>Book Recommendations</h2>
         <div class="book-container">
-          <div class="book" style="margin: 0 20px;">
-            <img src="https://m.media-amazon.com/images/I/612lqGvNJ4L._AC_UF350,350_QL50_.jpg" alt="Orderly and Humane: The Expulsion of the Germans after the Second World War" style="width: 200px;">
+          <div class="book">
+            <img src="https://m.media-amazon.com/images/I/612lqGvNJ4L._AC_UF350,350_QL50_.jpg" alt="Orderly and Humane: The Expulsion of the Germans after the Second World War by R.M.Douglas" style="width: 200px;">
             <p>Orderly and Humane: The Expulsion of the Germans after the Second World War</p>
           </div>
-          <div class="book" style="margin: 0 20px;">
-            <img src="https://m.media-amazon.com/images/I/71vs2aM1KlL._AC_UF1000,1000_QL80_.jpg" alt="Heimat, Loss and Identity: Flight and Expulsion in German Literature from the 1950s to the Present" style="width: 200px;">
+          <div class="book">
+            <img src="https://m.media-amazon.com/images/I/71vs2aM1KlL._AC_UF1000,1000_QL80_.jpg" alt="Heimat, Loss and Identity: Flight and Expulsion in German Literature from the 1950s to the Present by Karina Berger" style="width: 200px;">
             <p>Heimat, Loss and Identity: Flight and Expulsion in German Literature from the 1950s to the Present</p>
           </div>
         </div>
@@ -917,7 +1109,7 @@ body.nav-open::before {
 
           <div id="gloss-l" class="glossary-item">
             <div class="term">Molotov-Ribbentrop Pact</div>
-            <div class="definition">A non-aggression treaty signed between Nazi Germany and the Soviet Union in 1939, which included a secret protocol dividing Eastern Europe into spheres of influence. 1  Essentially it was an agreement that neither country would attack the other, and a secret agreement to divide up the land between them. 2 </div>
+            <div class="definition">A non-aggression treaty signed between Nazi Germany and the Soviet Union in 1939, which included a secret protocol dividing Eastern Europe into spheres of influence. 1  Essentially it was an agreement that neither country would attack the other, and a secret agreement to divide up the land between them.</div>
         </div>
           
           <div id="gloss-p" class="glossary-item">
@@ -984,6 +1176,8 @@ body.nav-open::before {
           <div class="citation-item">
             <div class="citation">Zieger, Walter. "En: Refugees and Expellees." EN:Refugees and Expellees - Historisches Lexikon Bayerns, www.historisches-lexikon-bayerns.de/Lexikon/EN:Refugees_and_Expellees. Accessed 14 Feb. 2025.</div>
           </div>
+
+          <figcaption>∫∫ End ∫∫</figcaption>
         </div>
       </div>
     </div>
@@ -991,6 +1185,7 @@ body.nav-open::before {
   
   <footer>
     <div class="container">
+      <p>Published on March 19, 2025</p>
       <p>© Hayden Chen | A Historical Documentation</p>
       <p>Created and Designed by Hayden Chen</p>
     </div> 
@@ -1091,7 +1286,28 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
     console.error('Required navigation elements missing');
   }
+  // Dark mode toggle functionality
+  const darkModeToggle = document.querySelector('.dark-mode-toggle');
+const moonIcon = document.querySelector('.moon-icon');
+const sunIcon = document.querySelector('.sun-icon');
+
+// Add toggle functionality
+if (darkModeToggle && moonIcon && sunIcon) {
+  darkModeToggle.addEventListener('click', function() {
+    document.body.classList.toggle('dark-mode');
+    if (document.body.classList.contains('dark-mode')) {
+      moonIcon.style.display = 'none';
+      sunIcon.style.display = 'block';
+    } else {
+      moonIcon.style.display = 'block';
+      sunIcon.style.display = 'none';
+    }
+  });
+} else {
+  console.error('Dark mode toggle or icons not found');
+}
 });
+
 </script>
 </body>
 </html>
